@@ -1,4 +1,5 @@
 from tkinter import *
+from random import randint
 
 class menuJogar:
     def __init__(self):
@@ -58,13 +59,22 @@ class menuJogar:
         self.lbImagem8 = Button(self.janelaPartida, image=self.palito)
         self.lbImagem9 = Button(self.janelaPartida, image=self.palito)
         self.lbImagem10 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem11 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem12 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem13 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem14 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem15 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem16 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem17 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem18 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem19 = Button(self.janelaPartida, image=self.palito)
+        self.lbImagem20 = Button(self.janelaPartida, image=self.palito)
 
-        # ADICAO
-        # lbSuperior.pack(side=TOP, fill=X)
-        # lbInferior.pack(side=BOTTOM, fill=X)
-        # lbDireito.pack(side=RIGHT, fill=Y)
-        # lbEsquerdo.pack(side=LEFT, fill=Y)
+        numeroPecas = randint(5, 20)
+
         self.lbFundo.pack()
+        self.lbImagem1.pack()
+
         '''lbQtdPecasTitulo.grid(row=0, column=0)
         lbQtdPecas.grid(row=0, column=1)
         lbImagem1.grid(row=1, column=0)
