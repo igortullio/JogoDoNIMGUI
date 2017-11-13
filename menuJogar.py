@@ -2,6 +2,7 @@ from tkinter import *
 from random import randint
 
 class menuJogar:
+
     def __init__(self):
         self.janelaJogar = Tk()
 
@@ -49,6 +50,9 @@ class menuJogar:
         self.lbFundo = Label(self.janelaPartida, image=self.fundo)
         self.lbQtdPecasTitulo = Label(self.janelaPartida, font=("Courier", 20), text="Peças no tabuleiro: ")
         self.lbQtdPecas = Label(self.janelaPartida, font=("Courier", 20), text="X")
+        self.btMenos = Button(self.janelaPartida, font=("Courier", 20), text="-", command=self.menos)
+        self.btMais = Button(self.janelaPartida, font=("Courier", 20), text="+", command=self.mais)
+
         self.lbImagem1 = Button(self.janelaPartida, image=self.palito)
         self.lbImagem2 = Button(self.janelaPartida, image=self.palito)
         self.lbImagem3 = Button(self.janelaPartida, image=self.palito)
@@ -72,8 +76,14 @@ class menuJogar:
 
         numeroPecas = randint(5, 20)
 
-        self.lbFundo.pack()
-        self.lbImagem1.pack()
+        #self.lbFundo.pack()
+        #self.lbImagem1.pack()
+
+        self.lbQtdPecasTitulo.grid(row=0, column=0)
+        self.btMenos.grid(row=0, column=1)
+        self.lbQtdPecas.grid(row=0, column=2)
+        self.btMais.grid(row=0, column=3)
+
 
         '''lbQtdPecasTitulo.grid(row=0, column=0)
         lbQtdPecas.grid(row=0, column=1)
@@ -109,3 +119,9 @@ class menuJogar:
         self.janelaCampeonato.geometry("800x600+300+100")
         self.janelaCampeonato.title("Jogo do NIM - Jogar Campeonato")
         self.janelaCampeonato.mainloop()
+
+    def menos(self):
+        pass
+
+    def mais(self):
+        pass
