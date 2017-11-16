@@ -43,60 +43,105 @@ class menuJogar:
         self.fundo = PhotoImage(file="Imagens\\fundo.gif")
         self.palito = PhotoImage(file="Imagens\\palito.gif")
 
-        self.lbSuperior = Label(self.janelaPartida, bg="black")
-        self.lbInferior = Label(self.janelaPartida, bg="black")
-        self.lbDireito = Label(self.janelaPartida, bg="black", text="    ")
-        self.lbEsquerdo = Label(self.janelaPartida, bg="black", text="    ")
-        self.lbFundo = Label(self.janelaPartida, image=self.fundo)
-        self.lbQtdPecasTitulo = Label(self.janelaPartida, font=("Courier", 20), text="Peças no tabuleiro: ")
-        self.lbQtdPecas = Label(self.janelaPartida, font=("Courier", 20), text="X")
-        self.btMenos = Button(self.janelaPartida, font=("Courier", 20), text="-", command=self.menos)
-        self.btMais = Button(self.janelaPartida, font=("Courier", 20), text="+", command=self.mais)
+        self.lbSuperior = Frame(self.janelaPartida, bg="black", height = 21)
+        self.lbInferior = Frame(self.janelaPartida, bg="black", height = 21)
+        self.lbDireito = Frame(self.janelaPartida, bg="black", width=18)
+        self.lbEsquerdo = Frame(self.janelaPartida, bg="black", width=18)
 
-        self.lbImagem1 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem2 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem3 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem4 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem5 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem6 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem7 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem8 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem9 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem10 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem11 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem12 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem13 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem14 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem15 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem16 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem17 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem18 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem19 = Button(self.janelaPartida, image=self.palito)
-        self.lbImagem20 = Button(self.janelaPartida, image=self.palito)
+        self.frame1 = Frame(self.janelaPartida, width=800)
+        self.frameEspaco = Frame(self.janelaPartida, height = 10, width=800)
+        self.frame2 = Frame(self.janelaPartida, width=800)
+
+        self.lbFundo = Label(self.frame1, image=self.fundo)
+        self.lbQtdPecasTitulo = Label(self.frame1, font=("Courier", 20), text="Peças no tabuleiro: ")
+        self.lbQtdPecas = Label(self.frame1, font=("Courier", 20), text="X")
+        self.lbLimiteJogadaTitulo = Label(self.frame1, font=("Courier", 20), text="Limite de retirada: ")
+        self.lbLimiteJogada = Label(self.frame1, font=("Courier", 20), text="X")
+        self.lbQtdTirarTitulo = Label(self.frame1, font=("Courier", 20), text="Remover quantas peças?")
+        self.lbQtdTirar = Label(self.frame1, font=("Courier", 20), text="0")
+        self.btMenos = Button(self.frame1, font=("Courier", 20), text="-", command=self.menos)
+        self.btMais = Button(self.frame1, font=("Courier", 20), text="+", command=self.mais)
+        self.lbEspaco01 = Label(self.frame1, text="   ")
+        self.btTirar = Button(self.frame1, font=("Courier", 20), text="Tirar", command=self.tirar)
+
+        self.imagens = []
+        self.lbImagem1 = Label(self.frame2, image=self.palito)
+        self.lbImagem2 = Label(self.frame2, image=self.palito)
+        self.lbImagem3 = Label(self.frame2, image=self.palito)
+        self.lbImagem4 = Label(self.frame2, image=self.palito)
+        self.lbImagem5 = Label(self.frame2, image=self.palito)
+        self.lbImagem6 = Label(self.frame2, image=self.palito)
+        self.lbImagem7 = Label(self.frame2, image=self.palito)
+        self.lbImagem8 = Label(self.frame2, image=self.palito)
+        self.lbImagem9 = Label(self.frame2, image=self.palito)
+        self.lbImagem10 = Label(self.frame2, image=self.palito)
+        self.lbImagem11 = Label(self.frame2, image=self.palito)
+        self.lbImagem12 = Label(self.frame2, image=self.palito)
+        self.lbImagem13 = Label(self.frame2, image=self.palito)
+        self.lbImagem14 = Label(self.frame2, image=self.palito)
+        self.lbImagem15 = Label(self.frame2, image=self.palito)
+        self.lbImagem16 = Label(self.frame2, image=self.palito)
+        self.lbImagem17 = Label(self.frame2, image=self.palito)
+        self.lbImagem18 = Label(self.frame2, image=self.palito)
+        self.lbImagem19 = Label(self.frame2, image=self.palito)
+        self.lbImagem20 = Label(self.frame2, image=self.palito)
+
+        self.imagens.append(self.lbImagem1)
+        self.imagens.append(self.lbImagem2)
+        self.imagens.append(self.lbImagem3)
+        self.imagens.append(self.lbImagem4)
+        self.imagens.append(self.lbImagem5)
+        self.imagens.append(self.lbImagem6)
+        self.imagens.append(self.lbImagem7)
+        self.imagens.append(self.lbImagem8)
+        self.imagens.append(self.lbImagem9)
+        self.imagens.append(self.lbImagem10)
+        self.imagens.append(self.lbImagem11)
+        self.imagens.append(self.lbImagem12)
+        self.imagens.append(self.lbImagem13)
+        self.imagens.append(self.lbImagem14)
+        self.imagens.append(self.lbImagem15)
+        self.imagens.append(self.lbImagem17)
+        self.imagens.append(self.lbImagem16)
+        self.imagens.append(self.lbImagem18)
+        self.imagens.append(self.lbImagem19)
+        self.imagens.append(self.lbImagem20)
 
         numeroPecas = randint(5, 20)
-
-        #self.lbFundo.pack()
-        #self.lbImagem1.pack()
-
-        self.lbQtdPecasTitulo.grid(row=0, column=0)
-        self.btMenos.grid(row=0, column=1)
-        self.lbQtdPecas.grid(row=0, column=2)
-        self.btMais.grid(row=0, column=3)
+        self.lbQtdPecas["text"]=numeroPecas
 
 
-        '''lbQtdPecasTitulo.grid(row=0, column=0)
-        lbQtdPecas.grid(row=0, column=1)
-        lbImagem1.grid(row=1, column=0)
-        lbImagem2.grid(row=2, column=0)
-        lbImagem3.grid(row=3, column=0)
-        lbImagem4.grid(row=4, column=0)
-        lbImagem5.grid(row=5, column=0)
-        lbImagem6.grid(row=1, column=1)
-        lbImagem7.grid(row=2, column=2)
-        lbImagem8.grid(row=3, column=3)
-        lbImagem9.grid(row=4, column=4)
-        lbImagem10.grid(row=5, column=5)'''
+        #ADIÇÃO
+        self.lbSuperior.pack(side=TOP, fill=X)
+        self.lbInferior.pack(side=BOTTOM, fill=X)
+        self.lbDireito.pack(side=RIGHT, fill=Y)
+        self.lbEsquerdo.pack(side=LEFT, fill=Y)
+        self.frame1.pack()
+        self.frameEspaco.pack()
+        self.frame2.pack()
+
+        self.lbQtdPecasTitulo.grid(row=0, column=0, sticky=W)                
+        self.lbQtdPecas.grid(row=0, column=3)
+        self.lbLimiteJogadaTitulo.grid(row=1, column=0, sticky=W)
+        self.lbLimiteJogada.grid(row=1, column=3)
+        self.lbQtdTirarTitulo.grid(row=2, column=0)
+        self.btMenos.grid(row=2, column=1)
+        self.lbQtdTirar.grid(row=2, column=3)
+        self.btMais.grid(row=2, column=5)
+        self.lbEspaco01.grid(row=2, column=6)
+        self.btTirar.grid(row=2, column=7)
+        self.btTirar.grid(row=2, column=8)
+
+        linha = 0
+        coluna = 0
+        for x in range (0, numeroPecas):
+            self.imagens[x].grid(row=linha, column=coluna)
+            if(coluna < 4):
+                coluna=coluna+1
+            else:
+                linha=linha+1
+                coluna=0
+        
 
         self.janelaPartida.geometry("800x600+300+100")
         self.janelaPartida.title("Jogo do NIM - Jogar Partida")
@@ -121,7 +166,12 @@ class menuJogar:
         self.janelaCampeonato.mainloop()
 
     def menos(self):
-        pass
+        if(int(self.lbQtdTirar["text"]) > 0 and int(self.lbQtdTirar["text"]) <= int(self.lbQtdPecas["text"])):
+            self.lbQtdTirar["text"]=int(self.lbQtdTirar["text"]) - 1
 
     def mais(self):
+        if (int(self.lbQtdTirar["text"]) < int(self.lbQtdPecas["text"])):
+            self.lbQtdTirar["text"] = int(self.lbQtdTirar["text"]) + 1
+
+    def tirar(self):
         pass
