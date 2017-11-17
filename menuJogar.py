@@ -58,7 +58,7 @@ class menuJogar:
         self.lbLimiteJogadaTitulo = Label(self.frame1, font=("Courier", 20), text="Limite de retirada: ")
         self.lbLimiteJogada = Label(self.frame1, font=("Courier", 20), text="X")
         self.lbQtdTirarTitulo = Label(self.frame1, font=("Courier", 20), text="Remover quantas peças?")
-        self.lbQtdTirar = Label(self.frame1, font=("Courier", 20), text="0")
+        self.lbQtdTirar = Label(self.frame1, font=("Courier", 20), text="1")
         self.btMenos = Button(self.frame1, font=("Courier", 20), text="-", command=self.menos)
         self.btMais = Button(self.frame1, font=("Courier", 20), text="+", command=self.mais)
         self.lbEspaco01 = Label(self.frame1, text="   ")
@@ -107,8 +107,13 @@ class menuJogar:
         self.imagens.append(self.lbImagem19)
         self.imagens.append(self.lbImagem20)
 
-        numeroPecas = randint(5, 20)
-        self.lbQtdPecas["text"]=numeroPecas
+        self.numeroPecas = randint(5, 20)
+        self.lbQtdPecas["text"]=self.numeroPecas
+
+        self.limite = randint(1, self.numeroPecas//2)
+        self.lbLimiteJogada["text"]=self.limite
+
+        self.inicio = 0 #Variável que será usada no metodo tirar
 
 
         #ADIÇÃO
@@ -134,14 +139,13 @@ class menuJogar:
 
         linha = 0
         coluna = 0
-        for x in range (0, numeroPecas):
+        for x in range(0, self.numeroPecas):
             self.imagens[x].grid(row=linha, column=coluna)
             if(coluna < 4):
                 coluna=coluna+1
             else:
                 linha=linha+1
                 coluna=0
-        
 
         self.janelaPartida.geometry("800x600+300+100")
         self.janelaPartida.title("Jogo do NIM - Jogar Partida")
@@ -166,12 +170,18 @@ class menuJogar:
         self.janelaCampeonato.mainloop()
 
     def menos(self):
-        if(int(self.lbQtdTirar["text"]) > 0 and int(self.lbQtdTirar["text"]) <= int(self.lbQtdPecas["text"])):
+        if(int(self.lbQtdTirar["text"]) > 1 and int(self.lbQtdTirar["text"]) <= int(self.lbLimiteJogada["text"])):
             self.lbQtdTirar["text"]=int(self.lbQtdTirar["text"]) - 1
 
     def mais(self):
-        if (int(self.lbQtdTirar["text"]) < int(self.lbQtdPecas["text"])):
+        if (int(self.lbQtdTirar["text"]) < int(self.lbLimiteJogada["text"])):
             self.lbQtdTirar["text"] = int(self.lbQtdTirar["text"]) + 1
 
     def tirar(self):
-        pass
+        self.tirar = int(self.lbQtdTirar["text"])
+        self.numeroPecas = int(self.lbQtdPecas["text"]) - self.tirar
+        self.lbQtdPecas["text"] = self.numeroPecas
+
+        for x in range(self.inicio, self.tirar):
+            self.imagens[x]["state"] = DISABLED
+        self.inicio = self.tirar
