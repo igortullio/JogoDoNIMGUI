@@ -194,7 +194,6 @@ class menuJogar:
                 self.ultima = self.ultima + 1
             if self.numeroPecas <= 0:
                 messagebox.showinfo("Vencedor", "Jogador 1 ganhou!")
-                self.destroy()
 
             self.lbVez["text"] = "2"
         else:
