@@ -1,7 +1,10 @@
 from tkinter import *
 from random import randint
+from tkinter import messagebox
 
 class menuJogar:
+
+    ultima = 0  # Variável que será usada no metodo tirar
 
     def __init__(self):
         self.janelaJogar = Tk()
@@ -55,6 +58,8 @@ class menuJogar:
         self.lbFundo = Label(self.frame1, image=self.fundo)
         self.lbQtdPecasTitulo = Label(self.frame1, font=("Courier", 20), text="Peças no tabuleiro: ")
         self.lbQtdPecas = Label(self.frame1, font=("Courier", 20), text="X")
+        self.lbVezTitulo = Label(self.frame1, font=("Courier", 20), text="Vez: ")
+        self.lbVez = Label(self.frame1, font=("Courier", 20), text="1")
         self.lbLimiteJogadaTitulo = Label(self.frame1, font=("Courier", 20), text="Limite de retirada: ")
         self.lbLimiteJogada = Label(self.frame1, font=("Courier", 20), text="X")
         self.lbQtdTirarTitulo = Label(self.frame1, font=("Courier", 20), text="Remover quantas peças?")
@@ -113,7 +118,6 @@ class menuJogar:
         self.limite = randint(1, self.numeroPecas//2)
         self.lbLimiteJogada["text"]=self.limite
 
-        self.inicio = 0 #Variável que será usada no metodo tirar
 
 
         #ADIÇÃO
@@ -127,6 +131,8 @@ class menuJogar:
 
         self.lbQtdPecasTitulo.grid(row=0, column=0, sticky=W)                
         self.lbQtdPecas.grid(row=0, column=3)
+        self.lbVezTitulo.grid(row=0, column=6)
+        self.lbVez.grid(row=0, column=8)
         self.lbLimiteJogadaTitulo.grid(row=1, column=0, sticky=W)
         self.lbLimiteJogada.grid(row=1, column=3)
         self.lbQtdTirarTitulo.grid(row=2, column=0)
@@ -134,7 +140,6 @@ class menuJogar:
         self.lbQtdTirar.grid(row=2, column=3)
         self.btMais.grid(row=2, column=5)
         self.lbEspaco01.grid(row=2, column=6)
-        self.btTirar.grid(row=2, column=7)
         self.btTirar.grid(row=2, column=8)
 
         linha = 0
@@ -181,7 +186,22 @@ class menuJogar:
         self.tirar = int(self.lbQtdTirar["text"])
         self.numeroPecas = int(self.lbQtdPecas["text"]) - self.tirar
         self.lbQtdPecas["text"] = self.numeroPecas
+        self.inicio = self.ultima
 
-        for x in range(self.inicio, self.tirar):
-            self.imagens[x]["state"] = DISABLED
-        self.inicio = self.tirar
+        if int(self.lbVez["text"]) == 1:
+            for x in range(self.inicio, self.tirar + self.inicio):
+                self.imagens[x]["state"] = DISABLED
+                self.ultima = self.ultima + 1
+            if self.numeroPecas <= 0:
+                messagebox.showinfo("Vencedor", "Jogador 1 ganhou!")
+                self.destroy()
+
+            self.lbVez["text"] = "2"
+        else:
+            for x in range(self.inicio, self.tirar + self.inicio):
+                self.imagens[x]["state"] = DISABLED
+                self.ultima = self.ultima + 1
+            if self.numeroPecas <= 0:
+                messagebox.showinfo("Vencedor", "Jogador 2 ganhou!")
+
+            self.lbVez["text"] = "1"
