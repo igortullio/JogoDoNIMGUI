@@ -30,7 +30,8 @@ class principal:
         self.btInstrucoes.pack(side=TOP)
         self.lbDireitos.pack(side=BOTTOM, fill=X)
 
-        self.janelaPrincipal.geometry("800x600+300+100")
+        #self.janelaPrincipal.geometry("800x600+300+100")
+        self.janelaPrincipal.geometry("800x600+0+0")
         self.janelaPrincipal.title("Jogo do NIM")
         self.janelaPrincipal.mainloop()
 

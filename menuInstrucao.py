@@ -45,7 +45,8 @@ class menuInstrucao:
         self.lbLink.pack(side=TOP)
         self.lbLink.bind("<Button-1>", self.link)
 
-        self.janelaInstrucao.geometry("800x600+300+100")
+        #self.janelaInstrucao.geometry("800x600+300+100")
+        self.janelaInstrucao.geometry("800x600+0+0")
         self.janelaInstrucao.title("Jogo do NIM - Instruções")
 
         #janelaPrincipal.destroy()  # Fechar janelaPrincipal

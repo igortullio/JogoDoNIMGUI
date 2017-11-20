@@ -33,7 +33,8 @@ class menuJogar:
         self.lbEspaco3.pack(side=TOP)
         self.btCampeonato.pack(side=TOP)
 
-        self.janelaJogar.geometry("800x600+300+100")
+        #self.janelaJogar.geometry("800x600+300+100")
+        self.janelaJogar.geometry("800x600+0+0")
         self.janelaJogar.title("Jogo do NIM - Jogar")
 
         #janelaPrincipal.destroy() #Fechar janelaPrincipal
@@ -152,7 +153,8 @@ class menuJogar:
                 linha=linha+1
                 coluna=0
 
-        self.janelaPartida.geometry("800x600+300+100")
+        #self.janelaPartida.geometry("800x600+300+100")
+        self.janelaPartida.geometry("800x600+0+0")
         self.janelaPartida.title("Jogo do NIM - Jogar Partida")
         self.janelaPartida.mainloop()
 
@@ -170,7 +172,8 @@ class menuJogar:
         self.lbDireito.pack(side=RIGHT, fill=Y)
         self.lbEsquerdo.pack(side=LEFT, fill=Y)
 
-        self.janelaCampeonato.geometry("800x600+300+100")
+        #self.janelaCampeonato.geometry("800x600+300+100")
+        self.janelaCampeonato.geometry("800x600+0+0")
         self.janelaCampeonato.title("Jogo do NIM - Jogar Campeonato")
         self.janelaCampeonato.mainloop()
 
